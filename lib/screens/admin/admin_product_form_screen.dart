@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/constants.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/validators.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_button.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 import '../../providers/product_provider.dart';
 import '../../providers/supplier_provider.dart';
 import '../../models/product_model.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_button.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/success_snackbar.dart';
-import '../../shared/utils/validators.dart';
-import '../../shared/utils/constants.dart';
+
 
 class AdminProductFormScreen extends StatefulWidget {
   final Product? product;
@@ -154,7 +155,7 @@ class _AdminProductFormScreenState extends State<AdminProductFormScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Product Name
-                  TextField(
+                  TextFormField(
                     controller: _nameController,
                     decoration: const InputDecoration(
                       labelText: 'Nama Produk *',
@@ -226,7 +227,7 @@ class _AdminProductFormScreenState extends State<AdminProductFormScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: TextField(
+                        child: TextFormField(
                           controller: _purchasePriceController,
                           decoration: const InputDecoration(
                             labelText: 'Harga Beli (Rp) *',
@@ -239,7 +240,7 @@ class _AdminProductFormScreenState extends State<AdminProductFormScreen> {
                       ),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: TextField(
+                        child: TextFormField(
                           controller: _sellingPriceController,
                           decoration: const InputDecoration(
                             labelText: 'Harga Jual (Rp) *',
@@ -258,7 +259,7 @@ class _AdminProductFormScreenState extends State<AdminProductFormScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: TextField(
+                        child: TextFormField(
                           controller: _stockController,
                           decoration: const InputDecoration(
                             labelText: 'Stok Awal (kg) *',
@@ -271,7 +272,7 @@ class _AdminProductFormScreenState extends State<AdminProductFormScreen> {
                       ),
                       const SizedBox(width: 12),
                       Expanded(
-                        child: TextField(
+                        child: TextFormField(
                           controller: _minStockController,
                           decoration: const InputDecoration(
                             labelText: 'Stok Minimum (kg) *',

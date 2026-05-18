@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/formatters.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/chart_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_card.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/empty_state_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 import '../../providers/report_provider.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_card.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/empty_state_widget.dart';
-import '../../shared/widgets/chart_widget.dart';
-import '../../shared/utils/formatters.dart';
+
 
 class AdminReportsScreen extends StatefulWidget {
   const AdminReportsScreen({super.key});
@@ -41,13 +42,13 @@ class _AdminReportsScreenState extends State<AdminReportsScreen> with SingleTick
     final reportProvider = Provider.of<ReportProvider>(context, listen: false);
 
     await reportProvider.fetchSalesReport(_selectedPeriod, date: _selectedDate);
-    _salesData = reportProvider.salesReport?.toJson();
+    _salesData = reportProvider.salesReport as Map<String, dynamic>?;
 
     final startDate = _getStartDate();
     final endDate = _getEndDate();
 
     await reportProvider.fetchProfitReport(startDate, endDate);
-    _profitData = reportProvider.profitReport?.toJson();
+    _profitData = reportProvider.profitReport as Map<String, dynamic>?;
 
     setState(() => _isLoading = false);
   }
@@ -348,7 +349,7 @@ class _AdminReportsScreenState extends State<AdminReportsScreen> with SingleTick
 
           // Pie Chart
           if (pieData['Telur'] > 0 || pieData['Beras'] > 0)
-            PieChartWidget(data: pieData, title: 'Komposisi Laba'),
+            PieChartWidget(data: Map<String, double>.from(pieData), title: 'Komposisi Laba'),
           const SizedBox(height: 24),
 
           // Egg Profit Detail

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/formatters.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_card.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
-import '../../providers/transaction_provider.dart';
-import '../../providers/product_provider.dart';
-import '../../providers/receivable_provider.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_card.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/utils/formatters.dart';
 import 'cashier_transaction_screen.dart';
 import 'cashier_receivables_screen.dart';
 import 'cashier_damaged_goods_screen.dart';

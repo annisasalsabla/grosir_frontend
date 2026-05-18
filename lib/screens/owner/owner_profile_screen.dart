@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/confirmation_dialog.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_button.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_text_field.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_button.dart';
-import '../../shared/widgets/custom_text_field.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/success_snackbar.dart';
-import '../../shared/widgets/confirmation_dialog.dart';
 
 class OwnerProfileScreen extends StatefulWidget {
   const OwnerProfileScreen({super.key});

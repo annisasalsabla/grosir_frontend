@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/formatters.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/confirmation_dialog.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_card.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/empty_state_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 import '../../providers/user_provider.dart';
 import '../../models/user_model.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_card.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/empty_state_widget.dart';
-import '../../shared/widgets/confirmation_dialog.dart';
-import '../../shared/widgets/success_snackbar.dart';
-import '../../shared/utils/formatters.dart';
+
 import '../admin/admin_user_form_screen.dart';
 
 class OwnerUsersScreen extends StatefulWidget {
@@ -345,7 +346,7 @@ class _OwnerUsersScreenState extends State<OwnerUsersScreen> {
                 child: _buildInfoColumn('Telepon', user.phone ?? '-'),
               ),
               Expanded(
-                child: _buildInfoColumn('Terdaftar', Formatters.formatDate(user.createdAt)),
+                child: _buildInfoColumn('Terdaftar', Formatters().formatDate(user.createdAt)),
               ),
               if (user.lastLoginAt != null)
                 Expanded(

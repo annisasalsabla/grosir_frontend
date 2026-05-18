@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,6 +6,7 @@ class Debt {
   final String debtNumber;
   final int supplierId;
   final String? supplierName;
+  final String? supplierPhone;
   final int productId;
   final String? productName;
   final int quantity;
@@ -26,6 +25,7 @@ class Debt {
     required this.debtNumber,
     required this.supplierId,
     this.supplierName,
+    this.supplierPhone,
     required this.productId,
     this.productName,
     required this.quantity,
@@ -46,6 +46,7 @@ class Debt {
       debtNumber: json['debt_number'],
       supplierId: json['supplier']['id'] ?? 0,
       supplierName: json['supplier']['name'],
+      supplierPhone: json['supplier']['phone'],
       productId: json['product']['id'] ?? 0,
       productName: json['product']['full_name'] ?? json['product']['name'],
       quantity: json['quantity'] ?? 0,

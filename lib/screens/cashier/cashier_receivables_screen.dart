@@ -1,15 +1,15 @@
 
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/formatters.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_button.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_card.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/empty_state_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 import '../../providers/receivable_provider.dart';
 import '../../models/receivable_model.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_card.dart';
-import '../../shared/widgets/custom_button.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/empty_state_widget.dart';
-import '../../shared/widgets/success_snackbar.dart';
-import '../../shared/utils/formatters.dart';
 
 class CashierReceivablesScreen extends StatefulWidget {
   const CashierReceivablesScreen({super.key});
@@ -82,67 +82,71 @@ class _CashierReceivablesScreenState extends State<CashierReceivablesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Piutang Pelanggan'),
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(50),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: SegmentedButton<String>(
-                      segments: const [
-                        ButtonSegment(value: 'pending', label: Text('Belum Lunas')),
-                        ButtonSegment(value: 'paid', label: Text('Lunas')),
-                        ButtonSegment(value: 'overdue', label: Text('Jatuh Tempo')),
-                      ],
-                      selected: {_selectedStatus},
-                      onSelectionChanged: (Set<String> selection) {
-                        setState(() {
-                          _selectedStatus = selection.first;
-                        });
-                        _loadReceivables();
-                      },
-                    ),
+      appBar: AppBar(
+        title: const Text('Piutang Pelanggan'),
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(50),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SegmentedButton<String>(
+                    segments: const [
+                      ButtonSegment(value: 'pending', label: Text('Belum Lunas')),
+                      ButtonSegment(value: 'paid', label: Text('Lunas')),
+                      ButtonSegment(value: 'overdue', label: Text('Jatuh Tempo')),
+                    ],
+                    selected: {_selectedStatus},
+                    onSelectionChanged: (Set<String> selection) {
+                      setState(() {
+                        _selectedStatus = selection.first;
+                      });
+                      _loadReceivables();
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
-        body: Consumer<ReceivableProvider>(
-          builder: (context, provider, child) {
-            if (provider.isLoading && provider.receivables.isEmpty) {
-              return const LoadingWidget(fullScreen: false);
-            }
+      ),
+      body: Stack(
+        children: [
+          Consumer<ReceivableProvider>(
+            builder: (context, provider, child) {
+              if (provider.isLoading && provider.receivables.isEmpty) {
+                return const LoadingWidget(fullScreen: false);
+              }
 
-            if (provider.receivables.isEmpty) {
-              return EmptyStateWidget(
-                title: 'Tidak Ada Piutang',
-                message: _selectedStatus == 'pending'
-                    ? 'Belum ada piutang yang tercatat'
-                    : _selectedStatus == 'paid'
-                    ? 'Belum ada piutang yang lunas'
-                    : 'Tidak ada piutang yang jatuh tempo',
-                icon: Icons.receipt_outlined,
+              if (provider.receivables.isEmpty) {
+                return EmptyStateWidget(
+                  title: 'Tidak Ada Piutang',
+                  message: _selectedStatus == 'pending'
+                      ? 'Belum ada piutang yang tercatat'
+                      : _selectedStatus == 'paid'
+                      ? 'Belum ada piutang yang lunas'
+                      : 'Tidak ada piutang yang jatuh tempo',
+                  icon: Icons.receipt_outlined,
+                );
+              }
+
+              return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: provider.receivables.length,
+                itemBuilder: (context, index) {
+                  final receivable = provider.receivables[index];
+                  return _buildReceivableCard(receivable);
+                },
               );
-            }
-
-            return ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: provider.receivables.length,
-              itemBuilder: (context, index) {
-                final receivable = provider.receivables[index];
-                return _buildReceivableCard(receivable);
-              },
-            );
-          },
-        ),
-        if (_showPaymentDialog && _selectedReceivable != null)
-    _buildPaymentDialog(),
+            },
+          ),
+          if (_showPaymentDialog && _selectedReceivable != null)
+            _buildPaymentDialog(),
+        ],
+      ),
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
+import 'package:grosir_tiga_bersaudara/theme/app_colors.dart';
+
 
 class EmptyStateWidget extends StatelessWidget {
   final String title;

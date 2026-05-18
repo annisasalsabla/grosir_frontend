@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/formatters.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/validators.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_button.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_text_field.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
-import '../../providers/debt_provider.dart';
+import '../../providers/debt_provider.dart.dart';
 import '../../providers/supplier_provider.dart';
 import '../../providers/product_provider.dart';
 import '../../models/debt_model.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_button.dart';
-import '../../shared/widgets/custom_text_field.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/success_snackbar.dart';
-import '../../shared/utils/validators.dart';
-import '../../shared/utils/formatters.dart';
+
 
 class AdminDebtFormScreen extends StatefulWidget {
   final Debt? debt;
@@ -169,7 +170,7 @@ class _AdminDebtFormScreenState extends State<AdminDebtFormScreen> {
                             prefixIcon: Icon(Icons.inventory),
                           ),
                           items: availableProducts.map((product) {
-                            return DropdownMenuItem(
+                            return DropdownMenuItem<int>(
                               value: product.id,
                               child: Text('${product.fullName} - ${product.formattedPurchasePrice}'),
                             );

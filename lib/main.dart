@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/providers/debt_provider.dart.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
@@ -6,7 +7,6 @@ import 'providers/auth_provider.dart';
 import 'providers/product_provider.dart';
 import 'providers/transaction_provider.dart';
 import 'providers/receivable_provider.dart';
-import 'providers/debt_provider.dart';
 import 'providers/stock_provider.dart';
 import 'providers/report_provider.dart';
 import 'providers/user_provider.dart';

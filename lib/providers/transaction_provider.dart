@@ -10,7 +10,7 @@ class TransactionProvider extends ChangeNotifier {
   String? _error;
   int _currentPage = 1;
   int _lastPage = 1;
-  int _total = 0;
+  int _totalCount = 0;
 
   // Cart for new transaction
   List<CartItem> _cart = [];
@@ -28,7 +28,7 @@ class TransactionProvider extends ChangeNotifier {
   String? get error => _error;
   int get currentPage => _currentPage;
   int get lastPage => _lastPage;
-  int get total => _total;
+  int get totalCount => _totalCount;
   bool get hasNextPage => _currentPage < _lastPage;
 
   // Cart getters
@@ -83,7 +83,7 @@ class TransactionProvider extends ChangeNotifier {
 
       _currentPage = response['meta']['current_page'];
       _lastPage = response['meta']['last_page'];
-      _total = response['meta']['total'];
+      _totalCount = response['meta']['total'];
       _error = null;
     } catch (e) {
       _error = e.toString();
@@ -166,7 +166,7 @@ class TransactionProvider extends ChangeNotifier {
       final request = TransactionRequest(
         items: items,
         paymentType: _selectedPaymentType!,
-        paidAmount: _selectedPaymentType == 'receivable' ? 0 : total,
+        paidAmount: _selectedPaymentType == 'receivable' ? 0.0 : total,
         dueDays: _dueDays,
         discount: _discount > 0 ? _discount : null,
         customerName: _customerName,

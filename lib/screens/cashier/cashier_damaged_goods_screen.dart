@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/constants.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/utils/formatters.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_button.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_card.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/empty_state_widget.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 import '../../providers/product_provider.dart';
 import '../../providers/stock_provider.dart';
 import '../../models/product_model.dart';
 import '../../models/damaged_good_model.dart';
 import '../../theme/app_colors.dart';
-import '../../shared/widgets/custom_card.dart';
-import '../../shared/widgets/custom_button.dart';
-import '../../shared/widgets/loading_widget.dart';
-import '../../shared/widgets/empty_state_widget.dart';
-import '../../shared/widgets/success_snackbar.dart';
-import '../../shared/utils/formatters.dart';
-import '../../shared/utils/constants.dart';
+
 
 class CashierDamagedGoodsScreen extends StatefulWidget {
   const CashierDamagedGoodsScreen({super.key});
@@ -332,7 +332,7 @@ class _CashierDamagedGoodsScreenState extends State<CashierDamagedGoodsScreen> {
       case 'cracked':
         return Icons.broken_image;
       case 'rotten':
-        return Icons.biohazard;
+        return Icons.warning_amber;
       case 'broken':
         return Icons.cancel;
       case 'expired':

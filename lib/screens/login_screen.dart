@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_button.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/custom_text_field.dart';
+import 'package:grosir_tiga_bersaudara/screens/shared/widgets/loading_widget.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
-import '../shared/widgets/custom_button.dart';
-import '../shared/widgets/custom_text_field.dart';
-import '../shared/widgets/loading_widget.dart';
+
 import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {

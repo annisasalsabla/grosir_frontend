@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Validators {
   static String? required(String? value) {
     if (value == null || value.trim().isEmpty) {
