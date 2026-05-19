@@ -114,7 +114,7 @@ class AppTheme {
     ),
 
     // Card Theme
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -153,7 +153,7 @@ class AppTheme {
     ),
 
     // Tab Bar Theme
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       labelColor: AppColors.primary,
       unselectedLabelColor: AppColors.textSecondary,
       indicatorColor: AppColors.primary,
@@ -164,7 +164,7 @@ class AppTheme {
     ),
 
     // Dialog Theme
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -288,13 +288,8 @@ class AppTheme {
     // Time Picker Theme
     timePickerTheme: TimePickerThemeData(
       backgroundColor: AppColors.surfaceLight,
-      hourMinuteColor: MaterialStateProperty.all(AppColors.primary.withOpacity(0.1)),
-      hourMinuteTextColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) {
-          return AppColors.primary;
-        }
-        return AppColors.textPrimary;
-      }),
+      hourMinuteColor: AppColors.primary.withOpacity(0.1),
+      hourMinuteTextColor: AppColors.primary,
       dialHandColor: AppColors.primary,
       dialBackgroundColor: AppColors.backgroundLight,
     ),
@@ -425,7 +420,7 @@ class AppTheme {
     ),
 
     // Card Theme
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
@@ -461,7 +456,7 @@ class AppTheme {
     ),
 
     // Tab Bar Theme
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       labelColor: AppColors.primary,
       unselectedLabelColor: AppColors.textSecondary,
       indicatorColor: AppColors.primary,
@@ -469,7 +464,7 @@ class AppTheme {
     ),
 
     // Dialog Theme
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),

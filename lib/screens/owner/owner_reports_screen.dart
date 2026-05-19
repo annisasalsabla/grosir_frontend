@@ -46,19 +46,18 @@ class _OwnerReportsScreenState extends State<OwnerReportsScreen> with SingleTick
     final reportProvider = Provider.of<ReportProvider>(context, listen: false);
 
     await reportProvider.fetchSalesReport(_selectedPeriod, date: _selectedDate);
-    _salesData = reportProvider.salesReport?.toJson();
+    _salesData = reportProvider.salesReport as Map<String, dynamic>?;
 
     final startDate = _getStartDate();
     final endDate = _getEndDate();
 
     await reportProvider.fetchProfitReport(startDate, endDate);
-    _profitData = reportProvider.profitReport?.toJson();
+    _profitData = reportProvider.profitReport as Map<String, dynamic>?;
 
-    await reportProvider.fetchEggProfitReport(startDate, endDate);
-    _eggProfitData = reportProvider.eggProfitReport?.toJson();
+    _eggProfitData = reportProvider.profitReport as Map<String, dynamic>?;
 
-    await reportProvider.fetchRiceProfitReport(startDate, endDate);
-    _riceProfitData = reportProvider.riceProfitReport?.toJson();
+
+    _riceProfitData = reportProvider.profitReport as Map<String, dynamic>?;
 
     setState(() => _isLoading = false);
   }
@@ -381,7 +380,7 @@ class _OwnerReportsScreenState extends State<OwnerReportsScreen> with SingleTick
           const SizedBox(height: 24),
 
           // Pie Chart
-          PieChartWidget(data: pieData, title: 'Komposisi Laba'),
+          PieChartWidget(data: Map<String, double>.from(pieData), title: 'Komposisi Laba'),
           const SizedBox(height: 24),
 
           // Egg Profit Detail
@@ -398,8 +397,8 @@ class _OwnerReportsScreenState extends State<OwnerReportsScreen> with SingleTick
                 const Divider(),
                 _buildProfitTotalRow(
                   'Total Telur',
-                  eggData['total_sales']?.toDouble() ?? 0,
-                  eggData['total_profit']?.toDouble() ?? 0,
+                  (eggData['total_sales'] as num?)?.toDouble() ?? 0,
+                  (eggData['total_profit'] as num?)?.toDouble() ?? 0,
                 ),
               ],
             ),
@@ -420,8 +419,8 @@ class _OwnerReportsScreenState extends State<OwnerReportsScreen> with SingleTick
                 const Divider(),
                 _buildProfitTotalRow(
                   'Total Beras',
-                  riceData['total_sales']?.toDouble() ?? 0,
-                  riceData['total_profit']?.toDouble() ?? 0,
+                  (riceData['total_sales'] as num?)?.toDouble() ?? 0,
+                  (riceData['total_profit'] as num?)?.toDouble() ?? 0,
                 ),
               ],
             ),

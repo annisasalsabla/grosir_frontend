@@ -346,7 +346,7 @@ class _OwnerUsersScreenState extends State<OwnerUsersScreen> {
                 child: _buildInfoColumn('Telepon', user.phone ?? '-'),
               ),
               Expanded(
-                child: _buildInfoColumn('Terdaftar', Formatters().formatDate(user.createdAt)),
+                child: _buildInfoColumn('Terdaftar', Formatters.formatDate(user.createdAt)),
               ),
               if (user.lastLoginAt != null)
                 Expanded(

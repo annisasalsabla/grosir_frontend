@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: _emailController,
                             label: 'Email',
                             hint: 'Masukkan email Anda',
-                            prefixIcon: Icons.email_outlined,
+                            prefixIcon: const Icon(Icons.email_outlined),
                             keyboardType: TextInputType.emailAddress,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: _passwordController,
                             label: 'Password',
                             hint: 'Masukkan password Anda',
-                            prefixIcon: Icons.lock_outline,
+                            prefixIcon: const Icon(Icons.lock_outline),
                             obscureText: _obscurePassword,
                             suffixIcon: IconButton(
                               icon: Icon(

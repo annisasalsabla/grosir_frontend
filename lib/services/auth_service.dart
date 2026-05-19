@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -65,5 +66,3 @@ class AuthService with ChangeNotifier {
   bool isCashier() => _role == 'cashier';
 }
 
-// Helper function for json encode/decode
-import 'dart:convert';
